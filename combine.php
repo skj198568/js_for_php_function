@@ -110,9 +110,14 @@ define('CURRENT_DIR', __DIR__.DIRECTORY_SEPARATOR);
 //保存的文件
 $file = sprintf('%sphp_%s.js', CURRENT_DIR, date('Y_m_d_H_i_s'));
 $all_content = '';
+$md = '# js_for_php_function
+js实现php函数库
+';
 foreach(dir_get(CURRENT_DIR) as $each_dir){
+    $md .= sprintf("## %s\n", pathinfo($each_dir)['filename']);
     $js_files = dir_get_files($each_dir, ['js']);
     foreach($js_files as $each_file){
+        $md .= sprintf("[%s](http://php.net/manual/zh/function.%s.php)  \n", pathinfo($each_file)['filename'], pathinfo($each_file)['filename']);
         $content = file_get_contents($each_file);
         $content = replace_once('function', '', $content);
         $content = replace_once('(', ': function(', $content);
@@ -123,6 +128,9 @@ foreach(dir_get(CURRENT_DIR) as $each_dir){
         }
     }
 }
+//文件内容
 file_put_contents($file, sprintf('php = {
 %s
 };', $all_content));
+//md
+file_put_contents(sprintf('%sREADME.md', CURRENT_DIR), $md);
