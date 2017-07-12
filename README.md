@@ -1,5 +1,15 @@
 # js_for_php_function
-js实现php函数库，方便php开发人员快速在js业务中快速使用已经熟悉的php函数库。已经实现的函数库如下：
+js实现php函数库，方便php开发人员快速在js业务中快速使用已经熟悉的php函数库。 
+使用方式，直接引入
+```
+<script src="php.min.js"></script>
+<script type="text/javascript">
+    console.log(php.array_flip(
+        {a: 1, b: 1, c: 2}
+    ));
+</script>
+```
+已经实现的函数库如下：
 ## array
 [array](http://php.net/manual/zh/function.array.php)  
 [array_change_key_case](http://php.net/manual/zh/function.array_change_key_case.php)  

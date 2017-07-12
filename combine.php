@@ -111,7 +111,17 @@ define('CURRENT_DIR', __DIR__.DIRECTORY_SEPARATOR);
 $file = sprintf('%sphp_%s.js', CURRENT_DIR, date('Y_m_d_H_i_s'));
 $all_content = '';
 $md = '# js_for_php_function
-js实现php函数库
+js实现php函数库，方便php开发人员快速在js业务中快速使用已经熟悉的php函数库。 
+使用方式，直接引入
+```
+<script src="php.min.js"></script>
+<script type="text/javascript">
+    console.log(php.array_flip(
+        {a: 1, b: 1, c: 2}
+    ));
+</script>
+```
+已经实现的函数库如下：
 ';
 foreach(dir_get(CURRENT_DIR) as $each_dir){
     $md .= sprintf("## %s\n", pathinfo($each_dir)['filename']);
