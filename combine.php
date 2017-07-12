@@ -127,7 +127,7 @@ foreach(dir_get(CURRENT_DIR) as $each_dir){
     $md .= sprintf("## %s\n", pathinfo($each_dir)['filename']);
     $js_files = dir_get_files($each_dir, ['js']);
     foreach($js_files as $each_file){
-        $md .= sprintf("[%s](http://php.net/manual/zh/function.%s.php)  \n", pathinfo($each_file)['filename'], pathinfo($each_file)['filename']);
+        $md .= sprintf("[%s](http://php.net/manual/zh/function.%s.php)  \n", pathinfo($each_file)['filename'], str_replace('_', '-', pathinfo($each_file)['filename']));
         $content = file_get_contents($each_file);
         $content = replace_once('function', '', $content);
         $content = replace_once('(', ': function(', $content);
